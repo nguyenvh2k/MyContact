@@ -59,6 +59,7 @@ public class RestContactController {
         }
         return contactList;
     }
+
     @Operation(summary = "Lấy tất cả thông tin liên hệ")
     @ApiResponses(value = {
             @ApiResponse(responseCode  = "200", description = "Thành công"),
@@ -79,9 +80,12 @@ public class RestContactController {
             @ApiResponse(responseCode  = "404", description = "Không tìm thấy",content = @Content)
     })
     @GetMapping("/contact/{id}")
-    public Optional<Contact> findContactById(@PathVariable(value = "id") Integer id){
-        contactService.findOne(id);
-        return contactService.findOne(id);
+    public ResponseEntity<Optional<Contact>> findContactById(@PathVariable(value = "id") Integer id){
+        Optional<Contact> contact = contactService.findOne(id);
+        if (!contact.isPresent()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(contact);
     }
 
     @Operation(summary = "Tìm liên hệ theo tên",description = "Nhập tên liên hệ cần tìm")
@@ -92,8 +96,12 @@ public class RestContactController {
             @ApiResponse(responseCode  = "404", description = "Không tìm thấy",content = @Content)
     })
     @GetMapping("/contact/search")
-    public List<Contact> findContactByName(String name){
-        return contactService.search(name);
+    public ResponseEntity<List<Contact>> findContactByName(String name){
+        List<Contact> contactList = contactService.search(name);
+        if (contactList.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().body(contactList);
     }
 
     @Operation(summary = "Thêm mới liên hệ",description = "Nhập các thông tin như tên, email, số điện thoại.")
@@ -118,6 +126,11 @@ public class RestContactController {
     })
     @DeleteMapping("/contact/{id}")
     public ResponseEntity<Contact> deleteContact(@PathVariable(value = "id") Integer id){
+        Optional<Contact> contact = null;
+        contact =  contactService.findOne(id);
+        if (!contact.isPresent()){
+           return ResponseEntity.notFound().build();
+        }
         contactService.delete(id);
         return ResponseEntity.ok().build();
     }
@@ -131,6 +144,10 @@ public class RestContactController {
     })
     @PutMapping("/contact/{id}")
     public ResponseEntity<Contact> updateContact(@PathVariable(value = "id") Integer id ,@RequestBody Contact contact){
+        Optional<Contact> contact1 = contactService.findOne(id);
+        if (!contact1.isPresent()){
+            return ResponseEntity.notFound().build();
+        }
         contact.setId(id);
         contactService.save(contact);
         return ResponseEntity.ok().body(contact);
