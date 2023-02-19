@@ -28,7 +28,7 @@ public class RestContactController {
     @Autowired
     private ContactService contactService;
 
-    @Operation(summary = "Tạo ngẫu nhiên thông tin liên hệ !", description = "Nhập số liên hệ cần tạo.")
+    @Operation(summary = "Tạo ngẫu nhiên thông tin liên hệ", description = "Nhập số liên hệ cần tạo.")
     @ApiResponses(value = {
             @ApiResponse(responseCode  = "200", description = "Thành công"),
             @ApiResponse(responseCode  = "401", description = "Chưa xác thực",content = @Content),
