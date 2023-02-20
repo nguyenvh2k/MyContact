@@ -1,0 +1,33 @@
+2023-02-20 15:11:51.579  INFO 24644 --- [restartedMain] com.myconcat.MyConcatApplication         : Starting MyConcatApplication using Java 1.8.0_202 on DESKTOP-FT469PQ with PID 24644 (D:\Workspace\spring_boot\MyConcat\target\classes started by admin in D:\Workspace\spring_boot\MyConcat)
+2023-02-20 15:11:51.581  INFO 24644 --- [restartedMain] com.myconcat.MyConcatApplication         : The following 1 profile is active: "local"
+2023-02-20 15:11:53.448  INFO 24644 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-20 15:11:53.448  INFO 24644 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.71]
+2023-02-20 15:11:53.665  INFO 24644 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-02-20 15:11:53.856  INFO 24644 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-20 15:11:53.900  INFO 24644 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-02-20 15:11:54.083  INFO 24644 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-02-20 15:11:54.176  INFO 24644 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-20 15:11:54.299  INFO 24644 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-20 15:11:54.312  INFO 24644 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2023-02-20 15:11:54.818  INFO 24644 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-20 15:11:55.221  WARN 24644 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-20 15:11:56.071  WARN 24644 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-02-20 15:11:56.316  INFO 24644 --- [restartedMain] com.myconcat.MyConcatApplication         : Started MyConcatApplication in 5.373 seconds (JVM running for 6.408)
+2023-02-20 15:12:10.935  INFO 24644 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-02-20 15:12:11.224 DEBUG 24644 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : select contact0_.id as id1_0_, contact0_.email as email2_0_, contact0_.name as name3_0_, contact0_.phone as phone4_0_ from contact contact0_
+2023-02-20 15:12:24.307  INFO 24644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-02-20 15:12:24.312  INFO 24644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-02-20 15:13:17.152  INFO 4204 --- [main] com.myconcat.MyContactApplicationTests   : Starting MyContactApplicationTests using Java 1.8.0_202 on DESKTOP-FT469PQ with PID 4204 (started by admin in D:\Workspace\spring_boot\MyConcat)
+2023-02-20 15:13:17.156  INFO 4204 --- [main] com.myconcat.MyContactApplicationTests   : The following 1 profile is active: "azure"
+2023-02-20 15:13:20.213  INFO 4204 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-20 15:13:20.328  INFO 4204 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-02-20 15:13:20.734  INFO 4204 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-02-20 15:13:21.183  INFO 4204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-20 15:13:22.734  INFO 4204 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-20 15:13:22.763  INFO 4204 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2023-02-20 15:13:24.659  INFO 4204 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-20 15:13:26.158  WARN 4204 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-20 15:13:28.867  WARN 4204 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-02-20 15:13:29.391  INFO 4204 --- [main] com.myconcat.MyContactApplicationTests   : Started MyContactApplicationTests in 12.823 seconds (JVM running for 14.526)
+2023-02-20 15:13:29.785  INFO 4204 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-02-20 15:13:29.794  INFO 4204 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
