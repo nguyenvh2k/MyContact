@@ -14,7 +14,6 @@ import java.util.Random;
 @SpringBootApplication
 public class MyConcatApplication {
 
-
     public static void main(String[] args) {
         SpringApplication.run(MyConcatApplication.class, args);
     }
