@@ -47,13 +47,15 @@ public class RestContactController {
                 "Liên","Oanh","Quỳnh","Ly","Ánh","Nguyệt","Mai","Hoa","Duyên"};
         String[] arr2 = {"Hoàng", "Nguyễn", "Lê", "Trịnh", "Trần", "Vũ", "Đinh", "Võ", "Lý","Phạm","Phan","Huỳnh","Đặng","Đỗ","Bùi","Hồ"};
         String[] arr3 = {"Thị","Văn","Hoàng","Đình","Đạt"};
+        int[] arr4 = {3,8,9};
         for (int i = 0;i<n;i++){
             String firstname = arr1[rd.nextInt(arr1.length-1)];
             String lastname = arr2[rd.nextInt(arr2.length-1)];
             String middlename = arr3[rd.nextInt(arr3.length-1)];
             String email = firstname.toLowerCase() + rd.nextInt(10000) + "@gmail.com";
             String fullname = lastname+" "+middlename+" "+firstname;
-            Contact contact = new Contact(fullname,email,rd.nextInt(10000000)+"");
+            Contact contact = new Contact(fullname,email,"0"+arr4[rd.nextInt(arr4.length)]+ rd.nextInt(10)
+                    +rd.nextInt(10)+rd.nextInt(10)+rd.nextInt(10)+rd.nextInt(10)+rd.nextInt(10)+rd.nextInt(10)+rd.nextInt(10)+"");
             contactService.save(contact);
             contactList.add(contact);
         }

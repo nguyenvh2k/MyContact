@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface ContactService {
     Iterable<Contact> findAll();
 
+    Iterable<Contact> findByUserId(Integer user_id);
+
     List<Contact> search(String term);
 
     Optional<Contact> findOne(Integer id);
@@ -15,4 +17,5 @@ public interface ContactService {
     void save(Contact contact);
 
     void delete(Integer id);
+
 }

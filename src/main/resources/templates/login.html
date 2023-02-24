@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>MyContact App</title>
+    <link href="../static/images/logo.png" th:href="@{/images/logo.png}" rel="shortcut icon" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <!-- Custom style -->
+    <link href="../static/css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet" />
+    <base href="/">
+    <style>
+        .req{
+            color: red;
+        }
+        .blue{
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+<form class="form-signin" th:action="@{login}" method="post" th:object="${user}">
+    <img class="mb-4" src="/img/logo/logo.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
+    <div class="text-center"><span class="req" th:text="${msg}"></span></div>
+    <div class="text-center"><span class="blue"></span></div>
+    <label for="username" class="sr-only">Tên đăng nhập</label>
+    <input type="text" id="username" class="form-control" placeholder="Tên đăng nhập" th:field="*{username}">
+    <label for="password" class="sr-only">Mật khẩu</label>
+    <input type="password" id="password" class="form-control" placeholder="Mật khẩu" th:field="*{password}">
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Ghi nhớ tài khoản
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+    <a href="">Đăng ký tài khoản mới</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2025</p>
+</form>
+</body>
+</html>

@@ -20,6 +20,11 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
+    public Iterable<Contact> findByUserId(Integer user_id) {
+        return contactRepository.findByUser_id(user_id);
+    }
+
+    @Override
     public List<Contact> search(String term) {
         return contactRepository.findByNameContaining(term);
     }
