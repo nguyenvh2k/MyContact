@@ -1,15 +1,9 @@
-FROM maven:3.6.3-jdk-11-slim AS build
-WORKDIR usr/src/springboot
-COPY . ./
-RUN mvn install
+FROM openjdk:11
+FROM maven:3.8-jdk-11 as maven_build
+COPY pom.xml pom.xml
+COPY src src
 RUN mvn clean package
-#
-# Package stage
-#
-FROM openjdk:11-jre-slim
-ARG JAR_NAME="MyConcat-0.0.1.jar"
-WORKDIR /usr/src/springboot
-EXPOSE 8080
-COPY --from=build /usr/src/springboot/target/${JAR_NAME}.jar ./springboot.jar
-CMD ["java","-jar", "./springboot.jar"]
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 
