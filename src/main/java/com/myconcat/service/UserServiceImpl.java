@@ -17,6 +17,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
     public Optional<User> findUserByNameAndPassword(String username, String password) {
         return userRepository.findByUsernameAndPassword(username,password);
     }

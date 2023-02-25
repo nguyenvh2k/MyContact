@@ -24,6 +24,9 @@ public class ContactController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private HttpSession session;
+
 //    @GetMapping("/")
 //    public String index(){
 //        return "redirect:/contact";
@@ -56,6 +59,8 @@ public class ContactController {
         if (result.hasErrors()) {
             return "form";
         }
+        User user = (User) session.getAttribute("user");
+        contact.setUser_id(user.getId());
         contactService.save(contact);
         redirect.addFlashAttribute("successMessage", "Saved contact successfully!");
         return "redirect:/contact";

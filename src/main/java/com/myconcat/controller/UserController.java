@@ -19,16 +19,27 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
+    @Autowired
+    private HttpSession session;
+
     @GetMapping("/")
     public String login(Model model){
         model.addAttribute("user",new User());
         return "login";
     }
 
+//    @GetMapping("/test")
+//    public String test(Model model){
+//        User user = new User();
+//        user.setUsername("admin");
+//        user.setPassword("admin");
+//        userService.saveUser(user);
+//        return "login";
+//    }
 
     //Dang nhap
     @PostMapping("/login")
-    public String loginForm(User user, HttpSession session,Model model){
+    public String loginForm(User user,Model model){
         Optional<User> user1 = userService.findUserByNameAndPassword(user.getUsername(), user.getPassword());
         User user_contact = user1.orElse(new User());
         if (!user1.isPresent()){
