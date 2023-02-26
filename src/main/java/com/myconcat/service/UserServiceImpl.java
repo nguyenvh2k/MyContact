@@ -2,9 +2,12 @@ package com.myconcat.service;
 
 import com.myconcat.entity.User;
 import com.myconcat.repository.UserRepository;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService{
@@ -12,8 +15,8 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
 
     @Override
-    public Iterable<User> findAllUser() {
-        return userRepository.findAll();
+    public List<User> findAllUser() {
+        return (List<User>) userRepository.findAll();
     }
 
     @Override

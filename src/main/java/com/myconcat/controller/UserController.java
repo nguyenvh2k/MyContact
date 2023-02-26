@@ -1,8 +1,9 @@
 package com.myconcat.controller;
 
-import com.google.gson.Gson;
 import com.myconcat.entity.User;
 import com.myconcat.service.UserServiceImpl;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -35,6 +38,7 @@ public class UserController {
        User user = new User();
        user.setUsername("admin");
        user.setPassword("admin");
+       user.setRole("admin");
        userService.saveUser(user);
        return "redirect/";
    }
@@ -49,15 +53,48 @@ public class UserController {
             model.addAttribute("msg","Tên đăng nhập hoặc mật khẩu không chính xác");
             return "login";
         }
+        if(user_contact.getRole().equals("admin")){
+            session.setAttribute("admin",user_contact);
+            System.out.println("Success !!");
+            return "redirect:/admin-page";
+        }
         System.out.println("Success !!");
         session.setAttribute("user",user_contact);
         session.setMaxInactiveInterval(60);
         return "redirect:/contact";
     }
 
+    @GetMapping("/signup")
+    public String register(Model model) {
+        model.addAttribute("user", new User());
+        model.addAttribute("error", (String)session.getAttribute("error"));
+        return "register";
+    }
 
-    @PostMapping("/signup")
+    @GetMapping("/admin-page")
+    public String admin(Model model){
+        if(session.getAttribute("admin")==null){
+            session.setAttribute("msg", "Bạn không có quyền vào trang quản trị");
+            return "redirect:/";
+        }
+        List<User> users = userService.findAllUser();
+        users.removeIf(o->o.getRole().equals("admin"));
+        model.addAttribute("users",users);
+        return "admin";
+    }
+
+    @PostMapping("/save-user")
     public String signup(User user,Model model) {
+        List<User> users = userService.findAllUser();
+        
+        for(User userDb : users){
+            if(userDb.getUsername().equals(user.getUsername())){
+                session.setAttribute("error", "Tài khoản đã tồn tại vui lòng chọn tên khác");
+                return "redirect:/signup";
+            }
+        }
+        userService.saveUser(user);
+        session.setAttribute("msg","Đăng ký tài khoản thành công vui lòng đăng nhập ");
         return "redirect:/";
     }
 
