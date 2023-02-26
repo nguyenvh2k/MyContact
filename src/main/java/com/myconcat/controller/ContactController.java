@@ -33,7 +33,13 @@ public class ContactController {
 //    }
 
     @GetMapping("/contact")
-    public String list(Model model, HttpSession session) {
+    public String list(Model model) {
+        if (session.getAttribute("user")==null){
+            String msg = "Phiên đăng nhập đã hết hạn vui lòng đăng nhập lại";
+            session.setAttribute("msg",msg);
+            session.setMaxInactiveInterval(60);
+            return "redirect:/";
+        }
         User user = (User) session.getAttribute("user");
         System.out.println("Thong tin: "+user);
         model.addAttribute("contacts", contactService.findByUserId(user.getId()));
