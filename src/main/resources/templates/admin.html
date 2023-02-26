@@ -6,7 +6,13 @@
 <nav th:replace="layout :: header"></nav>
 
 <div class="container" id="main-content">
-
+    <div class="row">
+        <div class="col-6 no-padding">
+            <a href="#" th:href="@{/logout}" class="btn btn-danger float-right">
+                <i class="fa-duotone fa-arrow-up-left-from-circle"></i>Đăng xuất
+            </a>
+        </div>
+    </div>
     <div class="row mt-4">
             <div class="table-responsive">
                 <h5>List of User</h5>

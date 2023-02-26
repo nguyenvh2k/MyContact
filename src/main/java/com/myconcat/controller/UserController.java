@@ -93,8 +93,21 @@ public class UserController {
                 return "redirect:/signup";
             }
         }
+        user.setRole("user");
         userService.saveUser(user);
         session.setAttribute("msg","Đăng ký tài khoản thành công vui lòng đăng nhập ");
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        if(session.getAttribute("admin")!=null){
+            session.removeAttribute("admin");
+        }else{
+            if(session.getAttribute("user")!=null){
+                session.removeAttribute("user");
+            }
+        }
         return "redirect:/";
     }
 
