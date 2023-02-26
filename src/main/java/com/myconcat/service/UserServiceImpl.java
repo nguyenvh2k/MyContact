@@ -28,4 +28,16 @@ public class UserServiceImpl implements UserService{
     public Optional<User> findUserByNameAndPassword(String username, String password) {
         return userRepository.findByUsernameAndPassword(username,password);
     }
+
+    @Override
+    public void delete(Integer id) {
+        // TODO Auto-generated method stub
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public User update() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

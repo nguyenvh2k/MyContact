@@ -9,4 +9,6 @@ public interface UserService {
     List<User> findAllUser();
     void saveUser(User user);
     Optional<User> findUserByNameAndPassword(String username,String password);
+    void delete(Integer id);
+    User update();
 }

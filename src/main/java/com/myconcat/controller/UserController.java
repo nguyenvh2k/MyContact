@@ -74,8 +74,7 @@ public class UserController {
     @GetMapping("/admin-page")
     public String admin(Model model){
         if(session.getAttribute("admin")==null){
-            session.setAttribute("msg", "Bạn không có quyền vào trang quản trị");
-            return "redirect:/";
+            return "error";
         }
         List<User> users = userService.findAllUser();
         users.removeIf(o->o.getRole().equals("admin"));
@@ -108,7 +107,7 @@ public class UserController {
                 session.removeAttribute("user");
             }
         }
-        return "redirect:/";
+        return "redirect:/contact";
     }
 
 }
